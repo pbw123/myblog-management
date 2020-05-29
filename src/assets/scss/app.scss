@@ -1,0 +1,26 @@
+*{
+  box-sizing: border-box;
+}
+body{
+  height: 100%
+}
+#app{
+  .main {
+    padding: 0;
+    margin: 0;
+    //position: absolute;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 250px;
+    background: rgb(84, 92, 100);
+  }
+  .router {
+    left: 250px;
+    position: absolute;
+    top: 0;
+    padding: 0;
+    margin: 0;
+  }
+}
