@@ -148,6 +148,8 @@
 </template>
 
 <script>
+import {SUCCESS_CODE} from "../assets/contant";
+
     export default {
         name: "user",
         data() {
@@ -206,7 +208,7 @@
                         'content-type': 'application/json'
                     }
                 }).then(res => {
-                    if (res.data.code === 0) {
+                    if (res.data.code ===SUCCESS_CODE) {
                         that.open(res.data.msg, 'success')
                         that.getUserList()
                         this.dialogFormVisible = false;
@@ -226,7 +228,7 @@
                 let that = this
                 this.$ajax.get(this.requestURL + '/userManager/getUsersByKeyword?keyword=' + this.keyword)
                     .then(res => {
-                        if (res.data.code === 0) {
+                        if (res.data.code ===SUCCESS_CODE) {
                             that.allData = res.data.data
                             that.pageUtil()
                         } else {
@@ -295,7 +297,7 @@
                     }
 
                 }).then(res => {
-                    if (res.data.code === 0) {
+                    if (res.data.code ===SUCCESS_CODE) {
                         that.open(res.data.msg, 'success')
                         that.getUserList()
                         this.dialogFormVisible = false;
@@ -309,7 +311,7 @@
             forbid(id) {
                 let that = this
                 this.$ajax.get(this.requestURL + '/userManager/forbid?id=' + id).then(res => {
-                    if (res.data.code === 0) {
+                    if (res.data.code ===SUCCESS_CODE) {
                         that.open(res.data.msg, 'success')
                         that.getUserList()
                     } else {
@@ -332,7 +334,7 @@
                 }
                 let that = this
                 this.$ajax.get(this.requestURL + '/userManager/forbidUser?ids=' + this.ids).then(res => {
-                    if (res.data.code === 0) {
+                    if (res.data.code ===SUCCESS_CODE) {
                         that.open(res.data.msg, 'success')
                         that.getUserList()
                         that.ids.length=0
@@ -400,7 +402,7 @@
             delUser(id) {
                 let that = this
                 this.$ajax.get(this.requestURL + '/userManager/delUser?userId=' + id).then(res => {
-                    if (res.data.code === 0) {
+                    if (res.data.code ===SUCCESS_CODE) {
                         that.open(res.data.msg, 'success')
                         that.getUserList()
                     } else {
@@ -438,7 +440,7 @@
                 }
                 let that = this
                 this.$ajax.get(this.requestURL + '/userManager/delUserArray?ids=' + this.ids).then(res => {
-                    if (res.data.code === 0) {
+                    if (res.data.code ===SUCCESS_CODE) {
                         that.open(res.data.msg, 'success')
                         that.getUserList()
                         that.ids.length=0
@@ -452,7 +454,7 @@
             getUserList() {
                 let that = this
                 this.$ajax.get(this.requestURL + '/userManager/getAllUsers').then(res => {
-                    if (res.data.code === 0) {
+                    if (res.data.code ===SUCCESS_CODE) {
                         that.allData = res.data.data
                         that.pageUtil()
                     } else {

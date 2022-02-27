@@ -1,3 +1,9 @@
+#运行
+```
+npm i node-sass
+npm i
+npm run serve
+```
 # 前台
 ***********
 ##  预览地址：https://panbingwen.cn/

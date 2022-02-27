@@ -93,6 +93,7 @@
 <script>
     import bg from '../../public/images/bg.jpg'
     import bg2 from '../../public/images/bg2.jpg'
+    import {SUCCESS_CODE} from "../assets/contant";
 
     export default {
         name: "index",

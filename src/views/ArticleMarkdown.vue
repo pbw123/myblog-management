@@ -100,6 +100,7 @@
 </template>
 <script>
     import qs from 'qs';
+    import {SUCCESS_CODE} from "../assets/contant";
 
     export default {
         data() {
@@ -234,7 +235,7 @@
                         'content-type': 'application/json'
                     }
                 }).then(res => {
-                    if (res.data.code === 0) {
+                    if (res.data.code === SUCCESS_CODE) {
                         that.open(res.data.msg, 'success')
                         that.$router.back(-1)
                     } else {
@@ -316,7 +317,7 @@
                         'content-type': 'application/json'
                     }
                 }).then(res => {
-                    if (res.data.code === 0) {
+                    if (res.data.code === SUCCESS_CODE) {
                         that.open(res.data.msg, 'success')
                         that.$router.back(-1)
                     } else {

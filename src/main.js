@@ -19,7 +19,7 @@ import qs from 'qs';
 Vue.use(qs)
 
 
-Vue.prototype.requestURL='https://localhost:8888'
+Vue.prototype.requestURL='http://localhost:8888'
 // import $ from 'jquery'
 
 new Vue({

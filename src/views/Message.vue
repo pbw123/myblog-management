@@ -206,6 +206,8 @@
 </template>
 
 <script>
+import {SUCCESS_CODE} from "../assets/contant";
+
     export default {
         name: "Message",
         data() {
@@ -262,7 +264,7 @@
                         'content-type': 'application/json'
                     }
                 }).then(res => {
-                    if (res.data.code === 0) {
+                    if (res.data.code ===SUCCESS_CODE) {
                         that.open(res.data.msg, 'success')
                         that.getMessageList()
                         this.addDialog = false
@@ -279,7 +281,7 @@
                 let that = this;
                 this.$ajax.get(this.requestURL + '/userManager/getCreateUsers')
                     .then(res => {
-                        if (res.data.code === 0) {
+                        if (res.data.code ===SUCCESS_CODE) {
                             that.options=res.data.data
                         }
                     }).catch(res => {
@@ -321,7 +323,7 @@
                 let that = this
                 this.$ajax.get(this.requestURL + '/messageManager/delMsgReplyList?ids=' + this.ids)
                     .then(res => {
-                    if (res.data.code === 0) {
+                    if (res.data.code ===SUCCESS_CODE) {
                         that.open(res.data.msg,'success')
                         that.activeReplys(res.data.data)
                         that.ids.length=0
@@ -335,7 +337,7 @@
             activeReplys(val) {
                 let that = this
                 this.$ajax.get(this.requestURL + '/messageManager/getMsgReplyById?mId=' + val).then(res => {
-                    if (res.data.code === 0) {
+                    if (res.data.code ===SUCCESS_CODE) {
                         that.formVisible=true
                         that.formReplys=res.data.data
                     } else {
@@ -373,7 +375,7 @@
                         'content-type': 'application/json'
                     }
                 }).then(res => {
-                    if (res.data.code === 0) {
+                    if (res.data.code ===SUCCESS_CODE) {
                         that.open(res.data.msg, 'success')
                         that.getMessageList()
                         this.dialogFormVisible = false
@@ -388,7 +390,7 @@
                 let that = this
                 this.$ajax.get(this.requestURL + '/messageManager/searchMsg?keyword=' + this.keyword)
                     .then(res => {
-                        if (res.data.code === 0) {
+                        if (res.data.code ===SUCCESS_CODE) {
                             that.allData=res.data.data
                             that.pageUtil()
                         } else {
@@ -401,7 +403,7 @@
             getMessageList() {
                 let that = this
                 this.$ajax.get(this.requestURL + '/message/getAllMessage').then(res => {
-                    if (res.data.code === 0) {
+                    if (res.data.code ===SUCCESS_CODE) {
                         that.allData = res.data.data
                         that.pageUtil()
                     } else {
@@ -473,7 +475,7 @@
                 }
                 let that = this
                 this.$ajax.get(this.requestURL + '/messageManager/delMessageList?ids=' + this.ids).then(res => {
-                    if (res.data.code === 0) {
+                    if (res.data.code ===SUCCESS_CODE) {
                         that.open(res.data.msg, 'success')
                         that.getMessageList()
                         that.ids.length=0

@@ -144,6 +144,8 @@
 </template>
 
 <script>
+import {SUCCESS_CODE} from "../assets/contant";
+
     export default {
         name: "Web",
         data() {
@@ -214,7 +216,7 @@
                         'content-type': 'application/json'
                     }
                 }).then(res => {
-                    if (res.data.code === 0) {
+                    if (res.data.code ===SUCCESS_CODE) {
                         that.open(res.data.msg, 'success')
                         that.getWebInfo()
                         that.dialogFormVisible = false
@@ -247,7 +249,7 @@
                 let that = this
                 this.$ajax.get(this.requestURL + '/web/getWebInfo')
                     .then(res => {
-                        if (res.data.code === 0) {
+                        if (res.data.code ===SUCCESS_CODE) {
                             that.info = res.data.data
                             that.tableData[0] = res.data.data
                             that.srcList.push(that.info.bgImg)

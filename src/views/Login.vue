@@ -34,6 +34,8 @@
 <script>
     import bg from '../../public/images/bg.jpg'
     import bg2 from '../../public/images/bg2.jpg'
+    import axios from 'axios'
+    import {SUCCESS_CODE} from "../assets/contant";
 
     export default {
         name: "Login",
@@ -76,7 +78,7 @@
                         'content-type': 'application/json'
                     }
                 }).then(res => {
-                    if (res.data.code === 0) {
+                    if (res.data.code === SUCCESS_CODE) {
                         that.open(res.data.msg, 'success')
                         sessionStorage.setItem('token',JSON.stringify(res.data.data))
                         if (that.$route.query.redirect) {

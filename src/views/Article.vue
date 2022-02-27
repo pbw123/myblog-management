@@ -218,6 +218,8 @@
 </template>
 
 <script>
+    import {SUCCESS_CODE} from "../assets/contant";
+
     export default {
         name: "Message",
         data() {
@@ -269,7 +271,7 @@
                         'content-type': 'application/json'
                     }
                 }).then(res => {
-                    if (res.data.code === 0) {
+                    if (res.data.code === SUCCESS_CODE) {
                         that.open(res.data.msg, 'success')
                         that.getAllArticle()
                         that.imageUrl = ''
@@ -310,7 +312,7 @@
                 let that = this
                 this.$ajax.get(this.requestURL + '/articleManager/getArticleById?id=' + val)
                     .then(res => {
-                        if (res.data.code === 0) {
+                        if (res.data.code === SUCCESS_CODE) {
                             // that.dialogFormVisible = true
                             // that.form = res.data.data
                             // let t = this.changeTime(res.data.data.aTime)
@@ -355,7 +357,7 @@
                         'content-type': 'application/json'
                     }
                 }).then(res => {
-                    if (res.data.code === 0) {
+                    if (res.data.code === SUCCESS_CODE) {
                         that.open(res.data.msg, 'success')
                         that.getAllArticle()
                         that.imageUrl = ''
@@ -370,7 +372,7 @@
             getAllArticle() {
                 let that = this
                 this.$ajax.get(this.requestURL + '/article/articleList').then(res => {
-                    if (res.data.code === 0) {
+                    if (res.data.code === SUCCESS_CODE) {
                         that.allData = res.data.data
                         that.pageUtil()
                     } else {
@@ -441,7 +443,7 @@
                 let that = this
                 this.$ajax.get(this.requestURL + '/articleManager/delArticle?ids=' + this.ids)
                     .then(res => {
-                        if (res.data.code === 0) {
+                        if (res.data.code === SUCCESS_CODE) {
                             that.open(res.data.msg, 'success')
                             that.getAllArticle()
                             that.multipleSelection.length = 0

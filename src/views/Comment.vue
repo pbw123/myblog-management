@@ -235,6 +235,8 @@
 </template>
 
 <script>
+    import {SUCCESS_CODE} from "../assets/contant";
+
     export default {
         name: "Message",
         data() {
@@ -305,7 +307,7 @@
                         'content-type': 'application/json'
                     }
                 }).then(res => {
-                    if (res.data.code === 0) {
+                    if (res.data.code ===SUCCESS_CODE) {
                         that.addDialog = false
                         that.open(res.data.msg, 'success')
                         that.getAllComments()
@@ -321,7 +323,7 @@
                 let that=this
                 this.$ajax.get(this.requestURL + '/userManager/getCreateUsers')
                     .then(res => {
-                        if (res.data.code === 0) {
+                        if (res.data.code ===SUCCESS_CODE) {
                             that.userList=res.data.data
                         }
                     }).catch(res => {
@@ -336,7 +338,7 @@
                 let that = this;
                 this.$ajax.get(this.requestURL + '/commentManager/getArticleComs?id=' + this.value)
                     .then(res => {
-                        if (res.data.code === 0) {
+                        if (res.data.code ===SUCCESS_CODE) {
                             that.allData = res.data.data
                             that.pageUtil()
                         } else {
@@ -375,7 +377,7 @@
                 }
                 let that = this
                 this.$ajax.get(this.requestURL + '/commentManager/delComReplyList?ids=' + this.ids).then(res => {
-                    if (res.data.code === 0) {
+                    if (res.data.code ===SUCCESS_CODE) {
                         that.open(res.data.msg, 'success')
                         that.activeReplys(res.data.data)
                         that.multipleSelection.length = 0
@@ -390,7 +392,7 @@
             activeReplys(val) {
                 let that = this
                 this.$ajax.get(this.requestURL + '/commentManager/getComReplyById?id=' + val).then(res => {
-                    if (res.data.code === 0) {
+                    if (res.data.code ===SUCCESS_CODE) {
                         that.formVisible = true
                         that.formReplys = res.data.data
                     } else {
@@ -429,7 +431,7 @@
                         'content-type': 'application/json'
                     }
                 }).then(res => {
-                    if (res.data.code === 0) {
+                    if (res.data.code ===SUCCESS_CODE) {
                         that.dialogFormVisible = false
                         that.open(res.data.msg, 'success')
                         that.getAllComments()
@@ -444,7 +446,7 @@
                 let that = this
                 this.$ajax.get(this.requestURL + '/commentManager/searchComs?keyword=' + this.keyword)
                     .then(res => {
-                        if (res.data.code === 0) {
+                        if (res.data.code ===SUCCESS_CODE) {
                             that.allData = res.data.data
                             that.pageUtil()
                         } else {
@@ -457,7 +459,7 @@
             getAllArticle() {
                 let that = this
                 this.$ajax.get(this.requestURL + '/commentManager/getAllArticle').then(res => {
-                    if (res.data.code === 0) {
+                    if (res.data.code ===SUCCESS_CODE) {
                         that.options = res.data.data
                     } else {
                         that.open(res.data.msg, 'error')
@@ -469,7 +471,7 @@
             getAllComments() {
                 let that = this
                 this.$ajax.get(this.requestURL + '/commentManager/getAllComment').then(res => {
-                    if (res.data.code === 0) {
+                    if (res.data.code ===SUCCESS_CODE) {
                         that.allData = res.data.data
                         that.pageUtil()
                     } else {
@@ -541,7 +543,7 @@
                 }
                 let that = this
                 this.$ajax.get(this.requestURL + '/commentManager/delComment?ids=' + this.ids).then(res => {
-                    if (res.data.code === 0) {
+                    if (res.data.code ===SUCCESS_CODE) {
                         that.open(res.data.msg, 'success')
                         that.getAllComments()
                         that.multipleSelection.length = 0

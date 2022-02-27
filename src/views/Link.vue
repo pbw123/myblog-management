@@ -71,6 +71,8 @@
 </template>
 
 <script>
+import {SUCCESS_CODE} from "../assets/contant";
+
     export default {
         name: "Carousel",
         data() {
@@ -114,7 +116,7 @@
                 let that = this
                 this.$ajax.get(this.requestURL + '/link/delLink?id=' + val)
                     .then(res => {
-                        if (res.data.code === 0) {
+                        if (res.data.code ===SUCCESS_CODE) {
                             that.open(res.data.msg, 'success')
                             that.getAllLink()
                         } else {
@@ -147,7 +149,7 @@
                         'content-type': 'application/json'
                     }
                 }).then(res => {
-                    if (res.data.code === 0) {
+                    if (res.data.code ===SUCCESS_CODE) {
                         that.open(res.data.msg, 'success')
                         that.dialogFormVisible = false
                         that.getAllLink()
@@ -205,7 +207,7 @@
                         'content-type': 'application/json'
                     }
                 }).then(res => {
-                    if (res.data.code === 0) {
+                    if (res.data.code ===SUCCESS_CODE) {
                         that.open(res.data.msg, 'success')
                         that.dialogFormVisible = false
                         that.getAllLink()
@@ -225,7 +227,7 @@
                 let that = this
                 this.$ajax.get(this.requestURL + '/link/getAllLink')
                     .then(res => {
-                        if (res.data.code === 0) {
+                        if (res.data.code ===SUCCESS_CODE) {
                             that.tableData = res.data.data
                         } else {
                             console.log(res)

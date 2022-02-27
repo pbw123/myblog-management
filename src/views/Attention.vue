@@ -83,6 +83,8 @@
 </template>
 
 <script>
+    import {SUCCESS_CODE} from "../assets/contant";
+
     export default {
         name: "Attention",
         data() {
@@ -121,7 +123,7 @@
                 let that = this
                 this.$ajax.get(this.requestURL + '/attentionManager/delAtten?id='+val)
                     .then(res => {
-                        if (res.data.code === 0) {
+                        if (res.data.code === SUCCESS_CODE) {
                             that.open(res.data.msg,'success')
                             that.getMyContact()
                         } else {
@@ -155,7 +157,7 @@
                         'content-type': 'application/json'
                     }
                 }).then(res => {
-                    if (res.data.code === 0) {
+                    if (res.data.code ===SUCCESS_CODE) {
                         that.open(res.data.msg, 'success')
                         that.dialogFormVisible = false
                         that.getMyContact()
@@ -217,7 +219,7 @@
                         'content-type': 'application/json'
                     }
                 }).then(res => {
-                    if (res.data.code === 0) {
+                    if (res.data.code ===SUCCESS_CODE) {
                         that.open(res.data.msg, 'success')
                         that.dialogFormVisible = false
                         that.getMyContact()
@@ -240,7 +242,7 @@
                 let that = this
                 this.$ajax.get(this.requestURL + '/attention/getMyContact')
                     .then(res => {
-                        if (res.data.code === 0) {
+                        if (res.data.code ===SUCCESS_CODE) {
                             that.tableData = res.data.data
                             that.contace = res.data.data[0]
                         } else {
